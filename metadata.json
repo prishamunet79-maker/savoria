@@ -1,0 +1,6 @@
+{
+  "name": "Savoria — Food Journal & Culinary Community",
+  "description": "Discover artisanal recipes, share your culinary creations, organize personalized weekly meal plans, and connect with a passionate community of food lovers.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

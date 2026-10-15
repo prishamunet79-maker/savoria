@@ -101,7 +101,11 @@ export const SocialFeed: React.FC<SocialFeedProps> = ({
         <div className="flex items-start gap-3">
           <img
             src={currentUser.avatar}
-            alt={currentUser.name}
+            alt={`Profile avatar of ${currentUser.name}`}
+            width="40"
+            height="40"
+            loading="lazy"
+            decoding="async"
             referrerPolicy="no-referrer"
             className="w-10 h-10 rounded-full object-cover border border-stone-200 mt-1"
           />
@@ -198,7 +202,11 @@ export const SocialFeed: React.FC<SocialFeedProps> = ({
                 <div className="flex items-center gap-3">
                   <img
                     src={post.author.avatar}
-                    alt={post.author.name}
+                    alt={`Avatar of community cook ${post.author.name}`}
+                    width="40"
+                    height="40"
+                    loading="lazy"
+                    decoding="async"
                     referrerPolicy="no-referrer"
                     className="w-10 h-10 rounded-full object-cover border border-stone-200"
                   />
@@ -234,7 +242,9 @@ export const SocialFeed: React.FC<SocialFeedProps> = ({
                 <div className="rounded-xl overflow-hidden border border-stone-200 max-h-96 bg-stone-100">
                   <img
                     src={post.image}
-                    alt="Community remake photo"
+                    alt={`Community kitchen dispatch photo by ${post.author.name}`}
+                    loading="lazy"
+                    decoding="async"
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover"
                   />
@@ -252,7 +262,11 @@ export const SocialFeed: React.FC<SocialFeedProps> = ({
                 >
                   <img
                     src={post.recipeAttached.image}
-                    alt=""
+                    alt={`Attached recipe: ${post.recipeAttached.title}`}
+                    width="56"
+                    height="56"
+                    loading="lazy"
+                    decoding="async"
                     className="w-14 h-14 rounded-md object-cover shrink-0"
                   />
                   <div className="flex-1 min-w-0">
@@ -350,6 +364,41 @@ export const SocialFeed: React.FC<SocialFeedProps> = ({
           );
         })}
       </div>
+
+      {/* AEO Community Knowledge Q&A Section */}
+      <section className="mt-14 pt-10 border-t border-stone-200 space-y-6" aria-label="Community Culinary Q&A">
+        <div className="max-w-3xl">
+          <span className="text-xs font-mono uppercase tracking-wider text-amber-900 font-semibold">
+            Community Knowledge & AEO Guidance
+          </span>
+          <h2 className="font-serif text-2xl font-bold text-stone-900 tracking-tight mt-1">
+            How can home cooks ask culinary questions and share recipe remakes?
+          </h2>
+          <p className="text-stone-700 text-sm leading-relaxed mt-2">
+            The Savoria Community Feed provides a direct dialogue channel where cooks post troubleshooting inquiries—such as sourdough starter hydration or gluten windowpane tests—and tag specific recipes to showcase their oven results.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="bg-white p-5 rounded-xl border border-stone-200 shadow-xs">
+            <h2 className="font-serif text-base font-bold text-stone-900 mb-2">
+              What are the best guidelines for publishing chef tips in the feed?
+            </h2>
+            <p className="text-stone-600 text-xs sm:text-sm leading-relaxed">
+              When posting a tip, specify exact kitchen variables including pan temperatures, resting durations, and sensory indicators like browning aroma to help other cooks easily reproduce your technique.
+            </p>
+          </div>
+
+          <div className="bg-white p-5 rounded-xl border border-stone-200 shadow-xs">
+            <h2 className="font-serif text-base font-bold text-stone-900 mb-2">
+              How do you filter between questions, chef advice, and dish remakes?
+            </h2>
+            <p className="text-stone-600 text-xs sm:text-sm leading-relaxed">
+              Use the single-click filter tabs at the top of the feed to switch instantly between All Dispatches, Recipe Remakes, Chef Tips, and Community Q&A with unique bookmarkable URLs.
+            </p>
+          </div>
+        </div>
+      </section>
 
     </div>
   );

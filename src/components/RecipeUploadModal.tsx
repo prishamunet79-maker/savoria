@@ -369,7 +369,11 @@ export const RecipeUploadModal: React.FC<RecipeUploadModalProps> = ({
                 <div className="aspect-[4/3] rounded-xl overflow-hidden border border-stone-200 bg-stone-100 shadow-xs">
                   <img
                     src={customImageUrl || coverImage}
-                    alt="Recipe preview"
+                    alt={`Preview of uploaded dish: ${title || 'Signature recipe'}`}
+                    width="320"
+                    height="240"
+                    loading="lazy"
+                    decoding="async"
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover"
                   />

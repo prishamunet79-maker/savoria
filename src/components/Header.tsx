@@ -118,9 +118,11 @@ export const Header: React.FC<HeaderProps> = ({
               href="/grocery"
               onClick={(e) => handleLinkClick(e, '/grocery')}
               title="View Consolidated Grocery List"
-              className="relative p-2.5 text-stone-700 hover:text-stone-900 hover:bg-stone-200/60 rounded-lg transition-colors"
+              aria-label="View Consolidated Grocery List"
+              className="relative p-2.5 text-stone-700 hover:text-stone-900 hover:bg-stone-200/60 rounded-lg transition-colors flex items-center"
             >
               <ShoppingBag className="w-5 h-5" />
+              <span className="sr-only">View Consolidated Grocery List</span>
               {groceryCount > 0 && (
                 <span className="absolute -top-1 -right-1 bg-amber-700 text-white text-[10px] font-mono tabular-nums font-bold w-4 h-4 rounded-full flex items-center justify-center">
                   {groceryCount}
@@ -142,15 +144,21 @@ export const Header: React.FC<HeaderProps> = ({
             <a
               href="/cookbook/preferences"
               onClick={(e) => handleLinkClick(e, '/cookbook/preferences')}
-              title={`Logged in as ${user.name}`}
-              className="relative rounded-full focus:ring-2 focus:ring-amber-800 focus:outline-none"
+              title={`Logged in as ${user.name} — View Dietary Preferences`}
+              aria-label={`View Dietary Preferences for ${user.name}`}
+              className="relative rounded-full focus:ring-2 focus:ring-amber-800 focus:outline-none flex items-center"
             >
               <img
                 src={user.avatar}
-                alt={user.name}
+                alt={`Profile portrait of home chef ${user.name}`}
+                width="36"
+                height="36"
+                loading="lazy"
+                decoding="async"
                 referrerPolicy="no-referrer"
                 className="w-9 h-9 rounded-full object-cover border border-stone-300 shadow-xs"
               />
+              <span className="sr-only">View dietary preferences and profile</span>
             </a>
           </div>
         </div>

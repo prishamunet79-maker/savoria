@@ -159,9 +159,9 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
           {/* Hero Section */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
             <div className="md:col-span-7 space-y-4">
-              <h2 className="font-serif text-2xl sm:text-4xl font-bold text-stone-900 tracking-tight leading-tight">
+              <h1 className="font-serif text-2xl sm:text-4xl font-bold text-stone-900 tracking-tight leading-tight">
                 {recipe.title}
-              </h2>
+              </h1>
 
               <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
                 {recipe.summary}
@@ -171,7 +171,11 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
               <div className="flex items-center gap-3 pt-2">
                 <img
                   src={recipe.author.avatar}
-                  alt={recipe.author.name}
+                  alt={`Portrait of recipe author ${recipe.author.name}`}
+                  width="40"
+                  height="40"
+                  loading="lazy"
+                  decoding="async"
                   referrerPolicy="no-referrer"
                   className="w-10 h-10 rounded-full object-cover border border-stone-200"
                 />
@@ -201,7 +205,11 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
               <div className="rounded-xl overflow-hidden border border-stone-200 shadow-sm aspect-[4/3] bg-stone-100">
                 <img
                   src={recipe.coverImage}
-                  alt={recipe.title}
+                  alt={`Freshly prepared artisanal ${recipe.title} with authentic ${recipe.cuisine} garnish`}
+                  width="480"
+                  height="360"
+                  loading="eager"
+                  decoding="async"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover"
                 />
@@ -231,31 +239,35 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
             </div>
           </div>
 
-          {/* Nutrition Strip */}
-          <div className="bg-amber-50/60 p-4 rounded-xl border border-amber-200/70 flex flex-wrap items-center justify-between gap-4">
+          {/* Nutrition Strip in Question-Answer Format */}
+          <div className="bg-amber-50/60 p-4 rounded-xl border border-amber-200/70 space-y-2">
             <div className="flex items-center gap-2">
               <Flame className="w-5 h-5 text-amber-700" />
-              <span className="text-xs font-semibold uppercase text-amber-950 font-mono tracking-wider">
-                Nutritional Breakdown (Per Serving)
-              </span>
+              <h2 className="text-xs font-semibold uppercase text-amber-950 font-mono tracking-wider">
+                What is the nutritional macro breakdown per serving?
+              </h2>
             </div>
-            <div className="flex items-center gap-6 text-xs font-mono text-stone-700">
-              <div>
+            <div className="flex flex-wrap items-center gap-6 text-xs font-mono text-stone-700">
+              <p>
+                <span className="text-stone-500 mr-1.5">Calories:</span>
+                <span className="font-bold text-stone-900 tabular-nums">{recipe.caloriesPerServing} kcal</span>
+              </p>
+              <p>
                 <span className="text-stone-500 mr-1.5">Protein:</span>
                 <span className="font-bold text-stone-900 tabular-nums">{recipe.macros.protein}g</span>
-              </div>
-              <div>
+              </p>
+              <p>
                 <span className="text-stone-500 mr-1.5">Carbs:</span>
                 <span className="font-bold text-stone-900 tabular-nums">{recipe.macros.carbs}g</span>
-              </div>
-              <div>
+              </p>
+              <p>
                 <span className="text-stone-500 mr-1.5">Fat:</span>
                 <span className="font-bold text-stone-900 tabular-nums">{recipe.macros.fat}g</span>
-              </div>
-              <div>
+              </p>
+              <p>
                 <span className="text-stone-500 mr-1.5">Fiber:</span>
                 <span className="font-bold text-stone-900 tabular-nums">{recipe.macros.fiber}g</span>
-              </div>
+              </p>
             </div>
           </div>
 
@@ -264,30 +276,35 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
             
             {/* Ingredients Column */}
             <div className="lg:col-span-5 space-y-4">
-              <div className="flex items-center justify-between pb-2 border-b border-stone-200">
-                <h3 className="font-serif text-xl font-bold text-stone-900">
-                  Ingredients
-                </h3>
-                
-                {/* Metric/Imperial Switch */}
-                <div className="flex items-center gap-1 bg-stone-100 p-0.5 rounded-md text-[11px] font-medium border border-stone-200">
-                  <button
-                    onClick={() => setIsMetric(true)}
-                    className={`px-2 py-0.5 rounded transition-colors ${
-                      isMetric ? 'bg-white shadow-xs text-stone-900 font-semibold' : 'text-stone-500'
-                    }`}
-                  >
-                    Metric (g/ml)
-                  </button>
-                  <button
-                    onClick={() => setIsMetric(false)}
-                    className={`px-2 py-0.5 rounded transition-colors ${
-                      !isMetric ? 'bg-white shadow-xs text-stone-900 font-semibold' : 'text-stone-500'
-                    }`}
-                  >
-                    US (oz)
-                  </button>
+              <div className="pb-2 border-b border-stone-200">
+                <div className="flex items-center justify-between">
+                  <h2 className="font-serif text-lg font-bold text-stone-900">
+                    What ingredients and quantities are needed for this dish?
+                  </h2>
+                  
+                  {/* Metric/Imperial Switch */}
+                  <div className="flex items-center gap-1 bg-stone-100 p-0.5 rounded-md text-[11px] font-medium border border-stone-200 ml-2 shrink-0">
+                    <button
+                      onClick={() => setIsMetric(true)}
+                      className={`px-2 py-0.5 rounded transition-colors ${
+                        isMetric ? 'bg-white shadow-xs text-stone-900 font-semibold' : 'text-stone-500'
+                      }`}
+                    >
+                      Metric
+                    </button>
+                    <button
+                      onClick={() => setIsMetric(false)}
+                      className={`px-2 py-0.5 rounded transition-colors ${
+                        !isMetric ? 'bg-white shadow-xs text-stone-900 font-semibold' : 'text-stone-500'
+                      }`}
+                    >
+                      US
+                    </button>
+                  </div>
                 </div>
+                <p className="text-stone-500 text-xs mt-1">
+                  Click any ingredient to check it off your prep list or scale servings dynamically.
+                </p>
               </div>
 
               {/* Dynamic Serving Scaler Control */}
@@ -375,13 +392,18 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
 
             {/* Instructions Column with Step Timers */}
             <div className="lg:col-span-7 space-y-4">
-              <div className="flex items-center justify-between pb-2 border-b border-stone-200">
-                <h3 className="font-serif text-xl font-bold text-stone-900">
-                  Step-by-Step Method
-                </h3>
-                <span className="text-xs text-stone-500 font-mono tabular-nums">
-                  {completedSteps.length} / {recipe.instructions.length} completed
-                </span>
+              <div className="pb-2 border-b border-stone-200">
+                <div className="flex items-center justify-between">
+                  <h2 className="font-serif text-lg font-bold text-stone-900">
+                    How do you prepare this dish step-by-step?
+                  </h2>
+                  <span className="text-xs text-stone-500 font-mono tabular-nums">
+                    {completedSteps.length} / {recipe.instructions.length} completed
+                  </span>
+                </div>
+                <p className="text-stone-500 text-xs mt-1">
+                  Follow each sequential technique below and click timer triggers when active timing is required.
+                </p>
               </div>
 
               <div className="space-y-4">
@@ -457,16 +479,55 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
 
           </div>
 
+          {/* AEO Culinary Masterclass & FAQ Section */}
+          <section className="pt-8 border-t border-stone-200 space-y-6" aria-label="Recipe Technique Questions and Answers">
+            <div>
+              <span className="text-xs font-mono uppercase tracking-wider text-amber-900 font-semibold">
+                Culinary Technique & AEO Masterclass
+              </span>
+              <h2 className="font-serif text-2xl font-bold text-stone-900 tracking-tight mt-1">
+                What is the primary culinary secret to perfecting {recipe.title}?
+              </h2>
+              <p className="text-stone-700 text-sm leading-relaxed mt-2">
+                {recipe.chefTips && recipe.chefTips.length > 0 ? recipe.chefTips[0] : recipe.summary}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-stone-50 p-5 rounded-xl border border-stone-200">
+                <h2 className="font-serif text-base font-bold text-stone-900 mb-2">
+                  How do you adjust cooking times and temperatures for different kitchens?
+                </h2>
+                <p className="text-stone-600 text-xs sm:text-sm leading-relaxed">
+                  {recipe.chefTips && recipe.chefTips.length > 1
+                    ? recipe.chefTips[1]
+                    : 'Monitor sensory cues such as golden caramelization, blistering, and fragrance rather than relying strictly on the clock, as oven calibrations and pan conductivity vary.'}
+                </p>
+              </div>
+
+              <div className="bg-stone-50 p-5 rounded-xl border border-stone-200">
+                <h2 className="font-serif text-base font-bold text-stone-900 mb-2">
+                  What ingredients can be substituted while preserving texture and flavor?
+                </h2>
+                <p className="text-stone-600 text-xs sm:text-sm leading-relaxed">
+                  {recipe.chefTips && recipe.chefTips.length > 2
+                    ? recipe.chefTips[2]
+                    : 'High-fat cultured butter and cold-pressed extra virgin olive oil provide ideal richness, while fresh seasonal herbs can be substituted based on local availability.'}
+                </p>
+              </div>
+            </div>
+          </section>
+
           {/* Community Reviews & Comments */}
           <div className="pt-8 border-t border-stone-200">
             <div className="flex items-center justify-between mb-6">
               <div>
-                <h3 className="font-serif text-xl font-bold text-stone-900 flex items-center gap-2">
+                <h2 className="font-serif text-lg font-bold text-stone-900 flex items-center gap-2">
                   <MessageSquare className="w-5 h-5 text-stone-700" />
-                  <span>Cookbook Notes & Reviews</span>
-                </h3>
+                  <span>What do home cooks and recipe testers say about this dish?</span>
+                </h2>
                 <p className="text-xs text-stone-500 mt-0.5">
-                  Notes from cooks who tested and prepared this dish.
+                  Real feedback, crumb observations, and flavor adjustments from community testing.
                 </p>
               </div>
 

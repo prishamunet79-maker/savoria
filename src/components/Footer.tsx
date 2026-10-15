@@ -30,43 +30,56 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab, onOpenUpload }) => 
             </p>
           </div>
 
-          {/* Navigation Links */}
+          {/* Navigation Links with Semantic Anchor Tags */}
           <div className="md:col-span-3 space-y-3">
             <h4 className="text-xs font-mono uppercase tracking-wider text-stone-400 font-semibold">
               Archive & Tables
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <button
-                  onClick={() => onSelectTab('recipes')}
+                <a
+                  href="/recipes"
+                  onClick={(e) => { e.preventDefault(); onSelectTab('recipes'); }}
                   className="hover:text-amber-200 transition-colors"
                 >
                   Artisanal Recipe Archive
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onSelectTab('feed')}
+                <a
+                  href="/community"
+                  onClick={(e) => { e.preventDefault(); onSelectTab('feed'); }}
                   className="hover:text-amber-200 transition-colors"
                 >
                   Community Dispatches & Q&A
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onSelectTab('planner')}
+                <a
+                  href="/planner"
+                  onClick={(e) => { e.preventDefault(); onSelectTab('planner'); }}
                   className="hover:text-amber-200 transition-colors"
                 >
                   Personalized Meal Planner
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onSelectTab('cookbook')}
+                <a
+                  href="/cookbook/saved"
+                  onClick={(e) => { e.preventDefault(); onSelectTab('cookbook'); }}
                   className="hover:text-amber-200 transition-colors"
                 >
                   My Curated Cookbook
-                </button>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/grocery"
+                  onClick={(e) => { e.preventDefault(); onSelectTab('planner'); }}
+                  className="hover:text-amber-200 transition-colors"
+                >
+                  Consolidated Grocery List
+                </a>
               </li>
             </ul>
           </div>
@@ -79,12 +92,13 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab, onOpenUpload }) => 
             <p className="text-xs text-stone-400 leading-relaxed">
               Have an heirloom bread recipe, a secret pasta sauce, or a nourishing soup? Share your step-by-step techniques with the community.
             </p>
-            <button
-              onClick={onOpenUpload}
+            <a
+              href="/recipes/new"
+              onClick={(e) => { e.preventDefault(); onOpenUpload(); }}
               className="inline-flex items-center gap-2 px-4 py-2 bg-stone-800 hover:bg-stone-700 text-amber-200 text-xs font-medium rounded-lg border border-stone-700 transition-colors"
             >
               <span>Publish a Recipe</span>
-            </button>
+            </a>
           </div>
 
         </div>

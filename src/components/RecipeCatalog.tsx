@@ -170,6 +170,50 @@ export const RecipeCatalog: React.FC<RecipeCatalogProps> = ({
         </div>
       )}
 
+      {/* AEO Culinary Knowledge & FAQ Section */}
+      <section className="mt-16 pt-10 border-t border-stone-200 space-y-6" aria-label="Culinary Questions and Answers">
+        <div className="max-w-3xl">
+          <span className="text-xs font-mono uppercase tracking-wider text-amber-900 font-semibold">
+            Culinary Craft & AEO Kitchen Knowledge
+          </span>
+          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight mt-1">
+            What makes Savoria artisanal recipes reliable and easy to recreate at home?
+          </h2>
+          <p className="text-stone-700 text-sm leading-relaxed mt-2">
+            Every recipe on Savoria undergoes empirical kitchen testing with precise dual-unit weight measurements (grams and ounces), explicit hydration ratios, interactive step-by-step timers, and sensory doneness cues rather than arbitrary clock estimates.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+          <div className="bg-white p-5 rounded-xl border border-stone-200 shadow-xs">
+            <h2 className="font-serif text-base font-bold text-stone-900 mb-2">
+              How do dynamic serving scalers prevent baking and cooking errors?
+            </h2>
+            <p className="text-stone-600 text-xs sm:text-sm leading-relaxed">
+              Our dynamic serving scaler recalculates dry and liquid ingredients proportionally while preserving baker's percentages, sauce emulsification balances, and spice ratios for anywhere from 1 to 12 servings.
+            </p>
+          </div>
+
+          <div className="bg-white p-5 rounded-xl border border-stone-200 shadow-xs">
+            <h2 className="font-serif text-base font-bold text-stone-900 mb-2">
+              How does weekly meal planning reduce grocery waste?
+            </h2>
+            <p className="text-stone-600 text-xs sm:text-sm leading-relaxed">
+              By scheduling recipes across a structured 7-day calendar and aggregating common pantry staples into an aisle-categorized shopping list, home cooks eliminate duplicate purchases and prioritize seasonal farmers market produce.
+            </p>
+          </div>
+
+          <div className="bg-white p-5 rounded-xl border border-stone-200 shadow-xs">
+            <h2 className="font-serif text-base font-bold text-stone-900 mb-2">
+              Where can members share recipe remakes and baking experiments?
+            </h2>
+            <p className="text-stone-600 text-xs sm:text-sm leading-relaxed">
+              The community feed lets cooks upload photo dispatches, ask troubleshooting questions about sourdough starters or protein sears, and exchange tested kitchen notes with fellow passionate food lovers.
+            </p>
+          </div>
+        </div>
+      </section>
+
     </section>
   );
 };

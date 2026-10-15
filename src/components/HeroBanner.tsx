@@ -33,7 +33,11 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
       <div className="absolute inset-0 z-0">
         <img
           src={heroRusticTable}
-          alt="Artisanal culinary feast with handmade pasta and olive oil"
+          alt="Artisanal culinary feast on reclaimed wood table with handmade tagliatelle pasta, semolina flour, and extra virgin olive oil"
+          width="1280"
+          height="720"
+          loading="eager"
+          decoding="async"
           referrerPolicy="no-referrer"
           className="w-full h-full object-cover object-center opacity-40 mix-blend-luminosity scale-105 filter contrast-105"
         />

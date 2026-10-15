@@ -34,12 +34,15 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
         href={recipeUrl}
         onClick={handleCardClick}
         className="relative aspect-[4/3] w-full overflow-hidden bg-stone-100 block cursor-pointer"
-        aria-label={`View recipe for ${recipe.title}`}
+        aria-label={`View full recipe and culinary guide for ${recipe.title}`}
       >
+        <span className="sr-only">View recipe: {recipe.title}</span>
         {imageLoaded ? (
           <img
             src={recipe.coverImage}
-            alt={recipe.title}
+            alt={`Artisanal ${recipe.title} prepared in ${recipe.cuisine} style`}
+            loading="lazy"
+            decoding="async"
             referrerPolicy="no-referrer"
             onError={() => setImageLoaded(false)}
             className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300"
@@ -107,7 +110,11 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
           <div className="flex items-center gap-2">
             <img
               src={recipe.author.avatar}
-              alt={recipe.author.name}
+              alt={`Portrait of chef ${recipe.author.name}`}
+              width="24"
+              height="24"
+              loading="lazy"
+              decoding="async"
               referrerPolicy="no-referrer"
               className="w-6 h-6 rounded-full object-cover border border-stone-200"
             />

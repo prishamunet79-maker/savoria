@@ -8,6 +8,7 @@ import {
   generateGroceryListFromPlan
 } from './utils/storage';
 import { useRouter } from './utils/router';
+import { STATIC_PAGES_SEO, getRecipeSeoConfig, updateDocumentSeo } from './utils/seo';
 import { Recipe, SocialPost, MealPlanDay, UserProfile, GroceryItem, RecipeComment } from './types';
 import { Header } from './components/Header';
 import { HeroBanner } from './components/HeroBanner';
@@ -80,26 +81,37 @@ export default function App() {
     return 'All Dishes';
   }, [route.category]);
 
-  // Update document title dynamically based on unique URL
+  // Synchronize dynamic SEO metadata (titles, meta descriptions, canonical URLs, OG and Twitter tags)
   useEffect(() => {
     if (activeRecipeForDetail) {
-      document.title = `${activeRecipeForDetail.title} — Savoria`;
+      const config = getRecipeSeoConfig(activeRecipeForDetail);
+      updateDocumentSeo(config);
     } else if (isUploadOpen) {
-      document.title = `Upload New Recipe — Savoria`;
+      updateDocumentSeo(STATIC_PAGES_SEO['/recipes/new']);
     } else if (isGroceryOpen) {
-      document.title = `Consolidated Grocery List — Savoria`;
+      updateDocumentSeo(STATIC_PAGES_SEO['/grocery']);
     } else if (currentTab === 'feed') {
-      const filterLabel = route.queryParamFilter ? ` (${route.queryParamFilter})` : '';
-      document.title = `Community Feed${filterLabel} — Savoria`;
+      updateDocumentSeo(STATIC_PAGES_SEO['/community']);
     } else if (currentTab === 'planner') {
-      document.title = `Personalized Meal Planner — Savoria`;
+      updateDocumentSeo(STATIC_PAGES_SEO['/planner']);
     } else if (currentTab === 'cookbook') {
-      const sub = route.subtab ? ` · ${route.subtab}` : '';
-      document.title = `My Cookbook${sub} — Savoria`;
+      const sub = route.subtab ? `/cookbook/${route.subtab}` : '/cookbook/saved';
+      const config = STATIC_PAGES_SEO[sub] || STATIC_PAGES_SEO['/cookbook'];
+      updateDocumentSeo(config);
     } else if (selectedCategory && selectedCategory !== 'All Dishes') {
-      document.title = `${selectedCategory} Recipes — Savoria`;
+      const slug = selectedCategory.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+      const catPath = `/recipes/category/${slug}`;
+      const config = STATIC_PAGES_SEO[catPath] || {
+        url: catPath,
+        title: `${selectedCategory} Recipes & Culinary Guide — Savoria`,
+        metaDescription: `Discover handcrafted ${selectedCategory.toLowerCase()} recipes with precise measurements, serving scalers, and chef notes. Cook delicious dishes today.`,
+        mainKeyword: `${selectedCategory.toLowerCase()} recipes`,
+        relatedKeywords: [`best ${selectedCategory.toLowerCase()} dishes`, `${selectedCategory.toLowerCase()} cooking guide`] as [string, string],
+        ogType: 'website' as const,
+      };
+      updateDocumentSeo(config);
     } else {
-      document.title = `Savoria — Food Journal & Culinary Community`;
+      updateDocumentSeo(STATIC_PAGES_SEO['/recipes'] || STATIC_PAGES_SEO['/']);
     }
   }, [activeRecipeForDetail, isUploadOpen, isGroceryOpen, currentTab, route, selectedCategory]);
 

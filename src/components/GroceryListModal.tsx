@@ -241,6 +241,29 @@ export const GroceryListModal: React.FC<GroceryListModalProps> = ({
             </div>
           )}
 
+          {/* AEO Grocery Q&A Section */}
+          <div className="pt-6 border-t border-stone-200 space-y-4">
+            <div>
+              <span className="text-[10px] font-mono uppercase tracking-wider text-amber-900 font-semibold">
+                Shopping Efficiency & AEO Guide
+              </span>
+              <h2 className="font-serif text-base font-bold text-stone-900 mt-0.5">
+                How does automated grocery consolidation eliminate duplicate shopping?
+              </h2>
+              <p className="text-stone-600 text-xs leading-relaxed mt-1">
+                When you add ingredients from multiple dishes or your weekly meal planner, Savoria groups items by department (Produce, Pantry, Dairy, Protein, Bakery, Spices) so you can navigate aisles sequentially without backtracking.
+              </p>
+            </div>
+            <div>
+              <h2 className="font-serif text-sm font-bold text-stone-900">
+                Can you export or copy your organized grocery checklist?
+              </h2>
+              <p className="text-stone-600 text-xs leading-relaxed mt-1">
+                Clicking 'Copy List' copies your formatted checklist with checkbox notations directly to your clipboard for quick sharing in text messages, notes apps, or supermarket trips.
+              </p>
+            </div>
+          </div>
+
         </div>
 
       </div>

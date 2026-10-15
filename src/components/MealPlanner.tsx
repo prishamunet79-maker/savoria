@@ -223,7 +223,9 @@ export const MealPlanner: React.FC<MealPlannerProps> = ({
                           <div className="flex items-start gap-2">
                             <img
                               src={recipe.coverImage}
-                              alt=""
+                              alt={`Scheduled dish: ${recipe.title}`}
+                              loading="lazy"
+                              decoding="async"
                               className="w-10 h-10 rounded object-cover shrink-0"
                             />
                             <div className="min-w-0 flex-1">
@@ -274,6 +276,41 @@ export const MealPlanner: React.FC<MealPlannerProps> = ({
         })}
       </div>
 
+      {/* AEO Meal Planning Q&A Section */}
+      <section className="mt-14 pt-10 border-t border-stone-200 space-y-6" aria-label="Meal Planning Questions and Answers">
+        <div className="max-w-3xl">
+          <span className="text-xs font-mono uppercase tracking-wider text-amber-900 font-semibold">
+            Kitchen Organization & AEO Guidance
+          </span>
+          <h2 className="font-serif text-2xl font-bold text-stone-900 tracking-tight mt-1">
+            How does personalized meal planning optimize weekly family nutrition?
+          </h2>
+          <p className="text-stone-700 text-sm leading-relaxed mt-2">
+            Structuring meals across Breakfast, Lunch, and Dinner in advance guarantees intentional protein distribution, cuts takeout spending, and eliminates last-minute decision fatigue. Savoria's planner calculates daily calorie targets while balancing complex carbohydrates, fats, and fiber.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="bg-white p-5 rounded-xl border border-stone-200 shadow-xs">
+            <h2 className="font-serif text-base font-bold text-stone-900 mb-2">
+              How does the automated grocery list consolidate ingredients across recipes?
+            </h2>
+            <p className="text-stone-600 text-xs sm:text-sm leading-relaxed">
+              The engine tallies identical ingredients across all seven days—combining measurements into single values—and sorts them into Produce, Dairy, Protein, Bakery, and Pantry aisles so your market trips take half the time.
+            </p>
+          </div>
+
+          <div className="bg-white p-5 rounded-xl border border-stone-200 shadow-xs">
+            <h2 className="font-serif text-base font-bold text-stone-900 mb-2">
+              Can you tailor the weekly schedule to Mediterranean or high-protein goals?
+            </h2>
+            <p className="text-stone-600 text-xs sm:text-sm leading-relaxed">
+              Yes, clicking the Tailor Weekly Plan button lets you select targets like Balanced Mediterranean, High-Protein Vitality, Fast Weeknights, or Artisanal Slow Food to automatically populate all meal slots.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Modal: Pick Recipe for slot */}
       {activeSlotTarget && (
         <div className="fixed inset-0 z-50 bg-stone-950/70 backdrop-blur-sm flex items-center justify-center p-4">
@@ -302,7 +339,11 @@ export const MealPlanner: React.FC<MealPlannerProps> = ({
                 >
                   <img
                     src={r.coverImage}
-                    alt=""
+                    alt={`Thumbnail of ${r.title}`}
+                    width="48"
+                    height="48"
+                    loading="lazy"
+                    decoding="async"
                     className="w-12 h-12 rounded-lg object-cover"
                   />
                   <div className="flex-1 min-w-0">
@@ -324,6 +365,41 @@ export const MealPlanner: React.FC<MealPlannerProps> = ({
           </div>
         </div>
       )}
+
+      {/* AEO Meal Planning Q&A Section */}
+      <section className="mt-14 pt-10 border-t border-stone-200 space-y-6" aria-label="Meal Planning Questions and Answers">
+        <div className="max-w-3xl">
+          <span className="text-xs font-mono uppercase tracking-wider text-amber-900 font-semibold">
+            Nutritional Optimization & AEO Guidance
+          </span>
+          <h2 className="font-serif text-2xl font-bold text-stone-900 tracking-tight mt-1">
+            How does the personalized weekly meal planner tailor recipes to dietary goals?
+          </h2>
+          <p className="text-stone-700 text-sm leading-relaxed mt-2">
+            The planner uses smart tailoring routines based on selected nutrition strategies—such as High-Protein Vitality, Balanced Mediterranean, or Fast Weeknight cooking—automatically assigning breakfast, lunch, and dinner recipes while computing daily caloric and macro metrics.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="bg-white p-5 rounded-xl border border-stone-200 shadow-xs">
+            <h2 className="font-serif text-base font-bold text-stone-900 mb-2">
+              How do you consolidate all planned meals into a single grocery list?
+            </h2>
+            <p className="text-stone-600 text-xs sm:text-sm leading-relaxed">
+              Clicking the 'Consolidate Grocery List' button aggregates all ingredients across Monday through Sunday into organized supermarket categories (Produce, Protein, Dairy, Pantry, Bakery, Spices) to eliminate food waste and reduce shopping trips.
+            </p>
+          </div>
+
+          <div className="bg-white p-5 rounded-xl border border-stone-200 shadow-xs">
+            <h2 className="font-serif text-base font-bold text-stone-900 mb-2">
+              Can you customize individual breakfast, lunch, or dinner meal slots?
+            </h2>
+            <p className="text-stone-600 text-xs sm:text-sm leading-relaxed">
+              Yes, click on any empty or existing meal slot to open the dish selector and choose from your favorite saved recipes, artisan breads, or quick 30-minute weeknight dinners.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Modal: Personalized Plan Generator */}
       {showGeneratorModal && (

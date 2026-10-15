@@ -85,7 +85,11 @@ export const MyCookbook: React.FC<MyCookbookProps> = ({
         <div className="flex items-center gap-4">
           <img
             src={user.avatar}
-            alt={user.name}
+            alt={`Portrait of home chef ${user.name}`}
+            width="64"
+            height="64"
+            loading="lazy"
+            decoding="async"
             referrerPolicy="no-referrer"
             className="w-16 h-16 rounded-full object-cover border-2 border-stone-200 shadow-xs"
           />
@@ -290,6 +294,41 @@ export const MyCookbook: React.FC<MyCookbookProps> = ({
           </div>
         </div>
       )}
+
+      {/* AEO Cookbook & Preferences Q&A Section */}
+      <section className="mt-14 pt-10 border-t border-stone-200 space-y-6" aria-label="Cookbook and Preferences Guidance">
+        <div className="max-w-3xl">
+          <span className="text-xs font-mono uppercase tracking-wider text-amber-900 font-semibold">
+            Cookbook Archiving & AEO Guidance
+          </span>
+          <h2 className="font-serif text-2xl font-bold text-stone-900 tracking-tight mt-1">
+            How do you curate and organize your personal online cookbook?
+          </h2>
+          <p className="text-stone-700 text-sm leading-relaxed mt-2">
+            Clicking the heart bookmark on any dish stores it into your Saved Favorites tab, allowing instant retrieval of ingredients and instructions without browsing through the general catalog.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="bg-white p-5 rounded-xl border border-stone-200 shadow-xs">
+            <h2 className="font-serif text-base font-bold text-stone-900 mb-2">
+              How do custom dietary preferences tailor your recipe recommendations?
+            </h2>
+            <p className="text-stone-600 text-xs sm:text-sm leading-relaxed">
+              Configuring preferences such as High-Protein, Vegetarian, or Mediterranean automatically guides the meal planning generator to match your nutritional lifestyle.
+            </p>
+          </div>
+
+          <div className="bg-white p-5 rounded-xl border border-stone-200 shadow-xs">
+            <h2 className="font-serif text-base font-bold text-stone-900 mb-2">
+              Where can you review and edit your published community recipes?
+            </h2>
+            <p className="text-stone-600 text-xs sm:text-sm leading-relaxed">
+              The My Uploaded Recipes tab displays all dishes you authored, along with community ratings, member reviews, and testing notes.
+            </p>
+          </div>
+        </div>
+      </section>
 
     </div>
   );
